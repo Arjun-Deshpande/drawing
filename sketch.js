@@ -20,12 +20,10 @@ function draw() {
     box.position.y += 5;
   }
   
- if (keyIsDown(32)){
+ if (keyIsDown(keyCode(32))){
    background("white");
  }
-  
-
-
+}
 
 
 
