@@ -23,6 +23,8 @@ function draw() {
  if (keyIsDown(32)){
    background("white");
  }
+  
+
 
 
 
