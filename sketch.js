@@ -19,7 +19,10 @@ function draw() {
   if (keyIsDown(DOWN_ARROW)){
     box.position.y += 5;
   }
-}
+  
+ if (keyIsDown(32)){
+   background("white");
+ }
 
 
 
