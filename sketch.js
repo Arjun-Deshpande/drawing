@@ -1,37 +1,44 @@
-var c = "black";
+const colorInput = document.getElementById('color');
+const weight = document.getElementById('weight');
+const clear = document.getElementById('clear');
+const paths = [];
+let currentPath = [];
 
 function setup() {
-  createCanvas(600, 400);
-	background(205);
+    createCanvas(window.innerWidth, window.innerHeight);
+    background(255);
 }
 
 function draw() {
-    
-  if (mouseIsPressed) {
-		stroke(c);
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  }
+    noFill();
 
-	noStroke();
-  //draw the first button
-  fill("red");
-  rect(0, 0, 40, 40);
+    if (mouseIsPressed) {
+        const point = {
+            x: mouseX,
+            y: mouseY,
+            color: colorInput.value,
+            weight: weight.value
+        };
+        currentPath.push(point);
+    }
 
-  //draw the second button
-  fill("blue");
-  rect(40, 0, 40, 40);
+    paths.forEach(path => {
+        beginShape();
+        path.forEach(point => {
+            stroke(point.color);
+            strokeWeight(point.weight);
+            vertex(point.x, point.y);
+        });
+        endShape();
+    });
 }
 
-//this will run whenever the mouse is pressed
 function mousePressed() {
-  if (mouseX > 0 && mouseX < 40 && mouseY > 0 && mouseY < 40) {
-    //set the variables to random values
-    c = "red";
-  }
-  if (mouseX > 40 && mouseX < 80 && mouseY > 0 && mouseY < 40) {
-    //set the variables to random values
-    c = "blue";
-  }
+    currentPath = [];
+    paths.push(currentPath);
 }
 
-
+clear.addEventListener('click', () => {
+    paths.splice(0);
+    background(255);
+});
