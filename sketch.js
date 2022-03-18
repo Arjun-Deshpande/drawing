@@ -1,29 +1,37 @@
-var box;
+var c = "black";
+
 function setup() {
-  createCanvas(1440, 900);
-  console.log("Hello World!")
-  box = createSprite(100, 200, 30, 30)
+  createCanvas(600, 400);
+	background(205);
 }
 
 function draw() {
-  drawSprites();
-  if (keyIsDown(RIGHT_ARROW)) {
-    box.position.x += 5;
+    
+  if (mouseIsPressed) {
+		stroke(c);
+    line(mouseX, mouseY, pmouseX, pmouseY);
   }
-  if (keyIsDown(LEFT_ARROW)) {
-    box.position.x -= 5;
-  }
-  if (keyIsDown(UP_ARROW)) {
-    box.position.y -= 5;
-  }
-  if (keyIsDown(DOWN_ARROW)){
-    box.position.y += 5;
-  }
-  
- if (keyIsDown(keyCode(32))){
-   background("white");
- }
+
+	noStroke();
+  //draw the first button
+  fill("red");
+  rect(0, 0, 40, 40);
+
+  //draw the second button
+  fill("blue");
+  rect(40, 0, 40, 40);
 }
 
+//this will run whenever the mouse is pressed
+function mousePressed() {
+  if (mouseX > 0 && mouseX < 40 && mouseY > 0 && mouseY < 40) {
+    //set the variables to random values
+    c = "red";
+  }
+  if (mouseX > 40 && mouseX < 80 && mouseY > 0 && mouseY < 40) {
+    //set the variables to random values
+    c = "blue";
+  }
+}
 
 
